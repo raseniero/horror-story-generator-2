@@ -25,13 +25,13 @@ const handler = async (req: Request): Promise<Response> => {
       { role: "system", content: systemInput },
       { role: "user", content: prompt },
     ],
-    temperature: 0.8,
+    temperature: 0.7,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 600,
+    max_tokens: 400,
     stream: true,
-    n: 2,
+    n: 1,
   };
 
   const stream = await OpenAIStream(payload);
