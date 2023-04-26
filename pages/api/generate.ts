@@ -17,9 +17,14 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response("No prompt in the request", { status: 400 });
   }
 
+  const systemInput = "Write a story SIMILAR to SYSTEM. writing style should be straightforward and concise. It should give the information in a clear and direct manner, without using overly descriptive language or complex sentence structures. The sentences are relatively short and simple, making it easy for the reader to understand the situation being described. This style is commonly used in journalistic writing, where clarity and brevity are essential. In first person. story should be extremely long with lots of detail for every part of the story."
+
   const payload: OpenAIStreamPayload = {
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }],
+    model: "gpt-4",
+    messages: [
+      { role: "system", content: systemInput },
+      { role: "user", content: prompt }
+    ],
     temperature: 0.7,
     top_p: 1,
     frequency_penalty: 0,
